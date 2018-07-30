@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Welcome from "@/components/Welcome";
-import Chat from '@/components/Chat';
+import Chat from "@/components/Chat";
 
 Vue.use(VueRouter);
 
@@ -13,9 +13,9 @@ export default new VueRouter({
       component: Welcome
     },
     {
-        path: '/chat',
-        name: 'Chat',
-        component Chat
+      path: "/chat",
+      name: "Chat",
+      component: Chat
     }
   ]
 });

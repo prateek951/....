@@ -1,5 +1,5 @@
 <template>
-    <h1>This is the app component of the application</h1>
+    <router-view></router-view>
 </template>
 
 
