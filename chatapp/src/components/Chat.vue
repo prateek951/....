@@ -23,6 +23,7 @@
 <script>
 import UserMessage from "@/components/UserMessage";
 import db from "@/utils/fb";
+import moment from 'moment';
 
 export default {
   name: "Chat",
@@ -36,7 +37,7 @@ export default {
     };
   },
   created() {
-    let ref = db.collection("messages");
+    let ref = db.collection("messages").orderBy('timestamp');
     ref.onSnapshot(snapshot => {
       // console.log(snapshot.docChanges());
       snapshot.docChanges().forEach(change => {
@@ -51,7 +52,7 @@ export default {
           id: doc.id,
           name: doc.data().name,
           content: doc.data().content,
-          timestamp: doc.data().timestamp
+          timestamp: moment(doc.data().timestamp).format('lll')
         });
         // console.log(this.messages);
       });
@@ -73,6 +74,6 @@ export default {
 }
 .chat .time {
   display: block;
-  font-size: 1.2em;
+  font-size: 0.8em;
 }
 </style>
