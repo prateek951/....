@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import db from '@/utils/fb';
 export default {
   name: "UserMessage",
   props: ["name"],
@@ -27,7 +28,13 @@ export default {
       if (this.userMessage) {
         // console.log("inside the onAddMessage", this.userMessage,this.name,Date.now());
         //Reach out to firebase and add it to firestore
-          
+        db.collection('messages').add({
+            content: this.userMessage,
+            name: this.name,
+            timestamp: Date.now()
+        }).catch(err => console.log(err));
+        this.userMessage = null;
+        this.feedback = null;
       
       } else {
         this.feedback = "You must enter a message";
