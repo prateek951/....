@@ -5,7 +5,8 @@
           <h2 class="green-text">Welcome</h2>
           <form @submit.prevent="onEnterChat()">
             <label for="name">Enter your name</label>
-            <input type="text" placeholder="Enter your name" v-model="name">
+            <input type="text" @keypress="onDiminishFeedback()" placeholder="Enter your name" v-model="name">
+            <p v-if="feedback" class="red-text">{{feedback}}</p>
             <button class="btn green">Enter Chat</button>
           </form>
       </div>
@@ -19,14 +20,28 @@ export default {
   name: "Welcome",
   data() {
     return {
-      name: ""
+      name: null,
+      feedback: null
     };
   },
   methods: {
     onEnterChat() {
-      console.log("inside the onEnterChat method....", this.name);
-      //Bande ka naam pick krlo and then make him enter the chat
-      //redirect him to the /chat route
+      if (this.name) {
+        console.log("Welcome to the chat application");
+        this.feedback = "";
+        //Redirect the user
+        // this.$router.push('/chat');
+        this.$router.push({ name: "Chat", params : { name: this.name}});
+      } else {
+        this.feedback = "You must enter a name to join";
+      }
+    },
+    onDiminishFeedback() {
+      setTimeout(() => {
+        if (this.name) {
+          this.feedback = null;
+        }
+      }, 500);
     }
   }
 };
@@ -40,10 +55,10 @@ export default {
 .welcome h2 {
   font-size: 3em;
 }
-form input[type='text']{
+form input[type="text"] {
   margin-top: 30px;
 }
-.welcome button{
+.welcome button {
   margin: 30px auto;
 }
 </style>

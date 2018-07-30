@@ -16,7 +16,20 @@ export default new VueRouter({
     {
       path: "/chat",
       name: "Chat",
-      component: Chat
+      component: Chat,
+      props: true,
+      beforeEnter: (to, from, next) => {
+        //  console.log(to.params.name);
+        if (to.params.name) {
+          next();
+        } else {
+          next({ name: "Welcome" });
+        }
+      }
+    },
+    {
+      path: "*",
+      redirect: "/"
     }
   ]
 });
