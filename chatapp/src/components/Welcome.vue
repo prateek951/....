@@ -19,15 +19,31 @@ export default {
   name: "Welcome",
   data() {
     return {
-      name: ''
+      name: ""
     };
   },
   methods: {
-    onEnterChat(){
-      console.log('inside the onEnterChat method....',this.name);
-      //Bande ka naam pick krlo and then make him enter the chat 
+    onEnterChat() {
+      console.log("inside the onEnterChat method....", this.name);
+      //Bande ka naam pick krlo and then make him enter the chat
       //redirect him to the /chat route
     }
   }
 };
 </script>
+
+<style scoped>
+.welcome {
+  max-width: 400px;
+  margin-top: 100px;
+}
+.welcome h2 {
+  font-size: 3em;
+}
+form input[type='text']{
+  margin-top: 30px;
+}
+.welcome button{
+  margin: 30px auto;
+}
+</style>
