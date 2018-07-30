@@ -50,7 +50,7 @@ export default {
         this.messages.push({
           id: doc.id,
           name: doc.data().name,
-          message: doc.data().content,
+          content: doc.data().content,
           timestamp: doc.data().timestamp
         });
         // console.log(this.messages);
