@@ -3,7 +3,7 @@
         <h2 class="center green-text">WeChat</h2>
         <div class="card">
             <div class="card-content">
-                <ul class="messages">
+                <ul class="messages" v-chat-scroll>
                     <li v-for="message of messages" :key="message.id">
                         <span class="teal-text">{{message.name}}</span>
                         <span class="grey-text text-darken-3">{{message.content}}</span>

@@ -2,7 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Welcome from "@/components/Welcome";
 import Chat from "@/components/Chat";
+import VueChatScroll from "vue-chat-scroll";
 
+Vue.use(VueChatScroll);
 Vue.use(VueRouter);
 
 export default new VueRouter({
